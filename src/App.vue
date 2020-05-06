@@ -15,7 +15,7 @@
       </button>
     </div>
     <div class="col-sm-12">
-      <div class="col-sm-4 nota" v-for="nota in notas">
+      <div class="col-sm-4 nota" v-for="(nota, index) in notas">
         <div class="card">
           <div class="card-block">
             <div class="card-title">
@@ -28,6 +28,7 @@
               {{nota.texto}}
             </div>
           </div>
+          <button class="close" @click="eliminarNota(index)">&times;</button>
         </div>
       </div>
     </div>
@@ -61,6 +62,9 @@ export default {
         titulo: titulo,
         fecha: new Date(Date.now()).toLocaleString()
       })
+    },
+    eliminarNota: function(index){
+      this.notas.splice(index, 1);
     }
   }
 }
