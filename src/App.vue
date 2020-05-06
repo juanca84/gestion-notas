@@ -10,6 +10,9 @@
         <label>Texto</label>
         <textarea v-model="nota.texto" class="form-control"></textarea>
       </div>
+      <button class="btn btn-primary" @click="agregarNota">
+        Enviar
+      </button>
     </div>
   </div>
 </template>
@@ -23,7 +26,24 @@ export default {
       nota: {
         titulo: '',
         texto: ''
-      }
+      },
+      notas:[
+        {
+          titulo: 'Ir al cine',
+          texto: 'Examinar las peliculas de estreno',
+          fecha: new Date(Date.now()).toTimeString()
+        }
+      ]
+    }
+  },
+  methods: {
+    agregarNota: function() {
+      let { texto, titulo} = this.nota;
+      this.notas.push({
+        titulo,
+        texto,
+        fecha: new Date(Date.now()).toTimeString()
+      })
     }
   }
 }
