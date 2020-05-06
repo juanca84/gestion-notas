@@ -14,6 +14,23 @@
         Enviar
       </button>
     </div>
+    <div class="col-sm-12">
+      <div class="col-sm-4 nota" v-for="nota in notas">
+        <div class="card">
+          <div class="card-block">
+            <div class="card-title">
+              {{nota.titulo}}
+            </div>
+            <div class="card-subtitle mb-2 text-muted">
+              {{nota.fecha}}
+            </div>
+            <div class="card-text">
+              {{nota.texto}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -40,9 +57,9 @@ export default {
     agregarNota: function() {
       let { texto, titulo} = this.nota;
       this.notas.push({
-        titulo,
-        texto,
-        fecha: new Date(Date.now()).toTimeString()
+        texto: texto,
+        titulo: titulo,
+        fecha: new Date(Date.now()).toLocaleString()
       })
     }
   }
@@ -52,5 +69,15 @@ export default {
 <style>
   .form {
     text-align: left;
+  }
+  .card {
+    text-align: left;
+    border: 1px solid #2c3e50;
+    border-radius: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .nota {
+    padding: 5px;
   }
 </style>
